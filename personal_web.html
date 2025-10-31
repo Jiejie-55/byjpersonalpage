@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>包原杰 - 网络与新媒体个人作品集</title>
+<!-- 引入Tailwind CSS（快速实现响应式样式） -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- 引入字体图标（用于下载、播放等按钮） -->
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<!-- 自定义样式配置 -->
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#FF6B6B', // 主色调（活泼珊瑚红）
+        secondary: '#4ECDC4', // 辅助色（清新青绿）
+        accent: '#FFD166', // 强调色（活力黄色）
+        neutral: '#FFF9F0', // 背景色（温暖米白）
+        dark: '#2E294E', // 深色文字
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'], // 无衬线字体（清晰易读）
+      },
+    }
+  }
+}
+</script>
+<style type="text/tailwindcss">
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  .gradient-bg {
+    background: linear-gradient(135deg, #FFD166 0%, #FF6B6B 50%, #4ECDC4 100%);
+  }
+}
+</style>
+</head>
+<body class="bg-neutral font-sans text-dark">
+<!-- 导航栏（滚动时固定顶部） -->
+<header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-sm">
+<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+<a href="#hero" class="text-2xl font-bold text-primary">包原杰的作品集</a>
+<!-- 桌面端导航 -->
+<nav class="hidden md:flex space-x-8">
+<a href="#about" class="font-medium hover:text-secondary transition-colors">个人信息</a>
+<a href="#key-works" class="font-medium hover:text-secondary transition-colors">重点作品</a>
+<a href="#other-videos" class="font-medium hover:text-secondary transition-colors">其他视频</a>
+<a href="#other-works" class="font-medium hover:text-secondary transition-colors">其他作品</a>
+<a href="#contact" class="font-medium hover:text-secondary transition-colors">联系我</a>
+</nav>
+<!-- 移动端导航按钮 -->
+<button id="menuBtn" class="md:hidden text-dark focus:outline-none">
+<i class="fa fa-bars text-xl"></i>
+</button>
+</div>
+<!-- 移动端导航菜单（默认隐藏） -->
+<div id="mobileMenu" class="hidden md:hidden bg-white shadow-md">
+<div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+<a href="#about" class="py-2 font-medium hover:text-secondary transition-colors">个人信息</a>
+<a href="#key-works" class="py-2 font-medium hover:text-secondary transition-colors">重点作品</a>
+<a href="#other-videos" class="py-2 font-medium hover:text-secondary transition-colors">其他视频</a>
+<a href="#other-works" class="py-2 font-medium hover:text-secondary transition-colors">其他作品</a>
+<a href="#contact" class="py-2 font-medium hover:text-secondary transition-colors">联系我</a>
+</div>
+</div>
+</header>
+
+<!-- 英雄区（首页封面） -->
+<section id="hero" class="pt-32 pb-20 gradient-bg">
+<div class="container mx-auto px-4 text-center">
+<h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white mb-4 text-shadow">
+包原杰 <span class="text-accent">· 网络与新媒体</span>
+</h1>
+<p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 max-w-2xl mx-auto mb-8">
+擅长AIGC内容创作、视频剪辑
+</p>
+<a href="#key-works" class="inline-block bg-white text-primary px-8 py-3 rounded-lg font-medium hover:bg-accent hover:text-white transition-all shadow-lg">
+查看我的作品 <i class="fa fa-arrow-down ml-2"></i>
+</a>
+</div>
+</section>
+
+<!-- 个人信息区 -->
+<section id="about" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12 text-dark">个人信息</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- 基本信息卡片 -->
+<div class="bg-gradient-to-br from-accent/10 to-secondary/10 rounded-xl p-6 shadow-sm card-hover border border-accent/20">
+<h3 class="text-xl font-semibold mb-4 text-primary flex items-center">
+<i class="fa fa-user-circle mr-2"></i> 基本信息
+</h3>
+<ul class="space-y-3 text-dark">
+<li><span class="font-medium">姓名：</span>包原杰</li>
+<li><span class="font-medium">性别：</span>女</li>
+<li><span class="font-medium">出生年月：</span>2005年5月</li>
+<li><span class="font-medium">邮箱：</span>3167633701@qq.com</li>
+<li><span class="font-medium">手机：</span>15771540526</li>
+</ul>
+</div>
+
+<!-- 教育背景卡片 -->
+<div class="bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl p-6 shadow-sm card-hover border border-primary/20">
+<h3 class="text-xl font-semibold mb-4 text-secondary flex items-center">
+<i class="fa fa-graduation-cap mr-2"></i> 教育背景
+</h3>
+<ul class="space-y-3 text-dark">
+<li><span class="font-medium">学校：</span>深圳大学</li>
+<li><span class="font-medium">专业：</span>网络与新媒体（本科）</li>
+<li><span class="font-medium">时间：</span>2023.09 - 至今</li>
+<li><span class="font-medium">GPA：</span>3.9/4.5（专业前10%）</li>
+<li><span class="font-medium">主修课程：</span>AI视听创作、网络营销、新媒体用户研究、数据抓取与清洗、数据可视化、视听基础、动态设计、网页前端交互设计等</li>
+</ul>
+</div>
+
+<!-- 相关技能卡片 -->
+<div class="bg-gradient-to-br from-secondary/10 to-primary/10 rounded-xl p-6 shadow-sm card-hover border border-secondary/20">
+<h3 class="text-xl font-semibold mb-4 text-accent flex items-center">
+<i class="fa fa-cogs mr-2"></i> 相关技能
+</h3>
+<ul class="space-y-3 text-dark">
+<li><span class="font-medium">图文视频：</span>剪映、AE、Ps、可画</li>
+<li><span class="font-medium">办公软件：</span>WPS、Office</li>
+<li><span class="font-medium">数据工具：</span>SPSS、八爪鱼、Tableau</li>
+<li><span class="font-medium">语言能力：</span>英语四级、普通话二级甲等</li>
+<li><span class="font-medium">AI工具：</span>豆包、DeepSeek、即梦、可灵、ChtaGPT</li>
+</ul>
+</div>
+
+<!-- 自我评价卡片 -->
+<div class="bg-gradient-to-br from-accent/10 to-secondary/20 rounded-xl p-6 shadow-sm card-hover border border-accent/20">
+<h3 class="text-xl font-semibold mb-4 text-primary flex items-center">
+<i class="fa fa-comment mr-2"></i> 自我评价
+</h3>
+<p class="text-dark leading-relaxed">
+网络与新媒体专业背景，在实践中积累了丰富的AIGC经验，擅长各类AI的使用；<br><br>
+综艺爱好者，爱好脑综、旅综等，熟悉各大社交媒体平台的机制与玩法；<br><br>
+具有组织能力，大学担任多个项目组长与负责人，具备协调与管理能力；<br><br>
+普通话标准，擅长沟通交流，能高效协同团队完成目标。
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 重点作品区 -->
+<section id="key-works" class="py-16 bg-gradient-to-b from-neutral to-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12 text-dark">重点作品</h2>
+
+<!-- 重点作品1：全国大学生广告艺术大赛AI主题视频 -->
+<div class="bg-white rounded-2xl p-8 mb-16 shadow-lg border border-accent/20">
+<h3 class="text-2xl font-semibold mb-6 text-primary flex items-center">
+<i class="fa fa-film mr-2"></i>
+全国大学生广告艺术大赛三分钟AIGC视频创作
+</h3>
+<p class="text-dark mb-8">
+<span class="font-medium">项目角色：</span>第二负责人 | <span class="font-medium">项目时间：</span>2025.05 - 2025.06 | <span class="font-medium">项目成果：</span>参与学院的首次“AI+视听内容生成”展映
+</p>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- 视频展示 -->
+<div class="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl p-4 border border-primary/10">
+<h4 class="text-lg font-medium mb-3 text-dark">作品视频</h4>
+<!-- 视频占位符（替换为你的实际视频链接） -->
+<div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center">
+<video
+  controls
+  class="w-full h-full object-cover rounded-lg"
+  poster="https://picsum.photos/800/450?random=1" <!-- 视频封面图（可选） -->
+>
+  <source src="替换为你的广告大赛视频链接.mp4" type="video/mp4">
+  您的浏览器不支持视频播放，请更新浏览器版本。
+</video>
+</div>
+</div>
+
+<!-- 文字说明与PDF下载 -->
+<div>
+<h4 class="text-lg font-medium mb-3 text-dark">项目说明</h4>
+<p class="text-dark mb-6 leading-relaxed">
+1. <span class="font-medium text-primary">内容策划：</span>调研大广赛往届获奖作品，结合AI视听创作的课程要求，选择“大广赛”IP进行创意策划；并参与组织小组进行头脑风暴，最终确认以“第一人称”“一镜到底”和“游戏闯关”的形式呈现视频；<br><br>
+2. <span class="font-medium text-secondary">AI工具应用：</span>使用即梦AI生成950+张图片素材，不断优化关键词提升素材质量，并总结出“画面主体+细节补充+场景环境+风格限定”的文生图公式，最终生成13张可使用素材，再协同组员图生视频，完成3分钟成片；<br><br>
+3. <span class="font-medium text-accent">项目价值：</span>参与学院首次"AI+视听内容生成"展映，熟练掌握多类AI创作工具，提升内容策划、团队协作及赛事项目管理能力。
+</p>
+
+<!-- PDF下载按钮 -->
+<a href="替换为你的演示文稿PDF路径.pdf"
+class="inline-block bg-secondary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary transition-colors flex items-center shadow-md"
+target="_blank"
+>
+<i class="fa fa-download mr-2"></i> 下载演示文稿PDF
+</a>
+</div>
+</div>
+</div>
+
+<!-- 重点作品2：文化桌游《掌中之星》 -->
+<div class="bg-white rounded-2xl p-8 shadow-lg border border-secondary/20">
+<h3 class="text-2xl font-semibold mb-6 text-secondary flex items-center">
+<i class="fa fa-gamepad mr-2"></i>
+文化桌游产品《掌中之星》（AI辅助创作）
+</h3>
+<p class="text-dark mb-8">
+<span class="font-medium">项目角色：</span>组长 | <span class="font-medium">项目时间：</span>2025.09 - 2025.10 | <span class="font-medium">项目成果：</span>完成含3类卡牌、2类版图、3类资产币及完整规则的桌游成品
+</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- 规则介绍视频 -->
+<div class="bg-gradient-to-br from-secondary/5 to-accent/5 rounded-xl p-4 border border-secondary/10">
+<h4 class="text-lg font-medium mb-3 text-dark">规则介绍视频</h4>
+<!-- 视频占位符（替换为你的实际视频链接） -->
+<div class="aspect-video bg-gradient-to-br from-secondary/10 to-primary/10 rounded-lg flex items-center justify-center">
+<video
+  controls
+  class="w-full h-full object-cover rounded-lg"
+  poster="https://picsum.photos/400/225?random=2" <!-- 视频封面图（可选） -->
+>
+  <source src="替换为你的桌游规则视频链接.mp4" type="video/mp4">
+  您的浏览器不支持视频播放，请更新浏览器版本。
+</video>
+</div>
+</div>
+
+<!-- 文字说明 -->
+<div class="md:col-span-2">
+<h4 class="text-lg font-medium mb-3 text-dark">项目说明</h4>
+<p class="text-dark mb-6 leading-relaxed">
+1. <span class="font-medium text-primary">创意策划：</span>围绕“文化工业”主题，聚焦“娱乐圈生态”核心场景，联合2名组员策划桌游的基本形式。借助豆包、DeepSeek生成10+版机制方案；人工筛选和整合后，设计出“玩家竞拍艺人→艺人产出收益→粉丝变现资产”的核心机制；<br><br>
+2. <span class="font-medium text-secondary">视觉落地：</span>使用即梦AI和豆包生成60+张卡牌素材，不断优化关键词（例如在风格上限定为华丽鎏金质感），以匹配“娱乐圈、华丽复古”的设定，最终完成包含桌游物料及PPT背景图的整体视觉体系搭建；<br><br>
+3. <span class="font-medium text-accent">项目优化：</span>组织3轮组内试玩，收集到“数值不平衡，技能卡优势过强”等有效反馈，将反馈输入豆包和DeepSeek后生成数值调整方案，再经由人工校准后优化，最终产出桌游成品。
+</p>
+
+<!-- PDF下载按钮（两个） -->
+<div class="flex flex-wrap gap-4">
+<a href="替换为你的桌游演示文稿PDF路径.pdf"
+class="inline-block bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-secondary transition-colors flex items-center shadow-md"
+target="_blank"
+>
+<i class="fa fa-download mr-2"></i> 下载项目演示PDF
+</a>
+<a href="替换为你的桌游物料展示PDF路径.pdf"
+class="inline-block bg-accent text-dark px-6 py-2 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors flex items-center shadow-md"
+target="_blank"
+>
+<i class="fa fa-download mr-2"></i> 下载物料展示PDF
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 其他视频作品区 -->
+<section id="other-videos" class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12 text-dark">其他视频作品（8个）</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- 视频作品1（替换为你的内容） -->
+<div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<div class="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=3"
+>
+  <source src="替换为你的视频1链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品1名称</h4>
+<p class="text-dark text-sm">
+简短说明：例如"DEGREE舞团舞台剪辑，获视频号600+赞"（替换为你的实际内容）
+</p>
+</div>
+</div>
+
+<!-- 视频作品2 -->
+<div class="bg-gradient-to-br from-secondary/5 to-primary/5 rounded-xl overflow-hidden shadow-sm card-hover border border-secondary/10">
+<div class="aspect-video bg-gradient-to-br from-secondary/10 to-accent/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=4"
+>
+  <source src="替换为你的视频2链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品2名称</h4>
+<p class="text-dark text-sm">
+简短说明：例如"融媒体中心抖音视频，获赞1500+"（替换为你的实际内容）
+</p>
+</div>
+</div>
+
+<!-- 视频作品3 -->
+<div class="bg-gradient-to-br from-accent/5 to-secondary/5 rounded-xl overflow-hidden shadow-sm card-hover border border-accent/10">
+<div class="aspect-video bg-gradient-to-br from-accent/10 to-primary/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=5"
+>
+  <source src="替换为你的视频3链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品3名称</h4>
+<p class="text-dark text-sm">
+简短说明：替换为你的视频3创作背景、工具或成果（例如"AI生成旅综片段，使用即梦AI+剪映"）
+</p>
+</div>
+</div>
+
+<!-- 视频作品4 -->
+<div class="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=6"
+>
+  <source src="替换为你的视频4链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品4名称</h4>
+<p class="text-dark text-sm">
+简短说明：替换为你的视频4创作背景、工具或成果（例如"校园活动宣传视频，覆盖1000+师生"）
+</p>
+</div>
+</div>
+
+<!-- 视频作品5-8 类似结构，省略以节省空间 -->
+<!-- 视频作品1（替换为你的内容） -->
+<div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<div class="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=3"
+>
+  <source src="替换为你的视频1链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品1名称</h4>
+<p class="text-dark text-sm">
+简短说明：例如"DEGREE舞团舞台剪辑，获视频号600+赞"（替换为你的实际内容）
+</p>
+</div>
+</div>
+
+<!-- 视频作品2 -->
+<div class="bg-gradient-to-br from-secondary/5 to-primary/5 rounded-xl overflow-hidden shadow-sm card-hover border border-secondary/10">
+<div class="aspect-video bg-gradient-to-br from-secondary/10 to-accent/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=4"
+>
+  <source src="替换为你的视频2链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品2名称</h4>
+<p class="text-dark text-sm">
+简短说明：例如"融媒体中心抖音视频，获赞1500+"（替换为你的实际内容）
+</p>
+</div>
+</div>
+
+<!-- 视频作品3 -->
+<div class="bg-gradient-to-br from-accent/5 to-secondary/5 rounded-xl overflow-hidden shadow-sm card-hover border border-accent/10">
+<div class="aspect-video bg-gradient-to-br from-accent/10 to-primary/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=5"
+>
+  <source src="替换为你的视频3链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品3名称</h4>
+<p class="text-dark text-sm">
+简短说明：替换为你的视频3创作背景、工具或成果（例如"AI生成旅综片段，使用即梦AI+剪映"）
+</p>
+</div>
+</div>
+
+<!-- 视频作品4 -->
+<div class="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<div class="aspect-video bg-gradient-to-br from-primary/10 to-accent/10">
+<video
+  controls
+  class="w-full h-full object-cover"
+  poster="https://picsum.photos/400/225?random=6"
+>
+  <source src="替换为你的视频4链接.mp4" type="video/mp4">
+  浏览器不支持播放
+</video>
+</div>
+<div class="p-5">
+<h4 class="text-lg font-semibold mb-2 text-dark">视频作品4名称</h4>
+<p class="text-dark text-sm">
+简短说明：替换为你的视频4创作背景、工具或成果（例如"校园活动宣传视频，覆盖1000+师生"）
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 其他作品区（推文+海报） -->
+<section id="other-works" class="py-16 bg-gradient-to-b from-white to-neutral">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12 text-dark">其他作品</h2>
+
+<!-- 推文作品（图片形式） -->
+<div class="bg-white rounded-2xl p-8 mb-12 shadow-lg border border-secondary/20">
+<h3 class="text-2xl font-semibold mb-6 text-secondary flex items-center">
+<i class="fa fa-file-text-o mr-2"></i> 推文作品
+</h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+<!-- 推文图片 -->
+<div class="bg-gradient-to-br from-secondary/5 to-accent/5 rounded-xl p-4 flex justify-center border border-secondary/10">
+<img
+  src="https://picsum.photos/800/500?random=11"
+  alt="推文作品截图"
+  class="max-w-full h-auto rounded-lg shadow-sm"
+  title="点击查看大图"
+  onclick="this.style.width='100%'; this.style.cursor='zoom-out'"
+  ondblclick="this.style.width='auto'; this.style.cursor='zoom-in'"
+>
+</div>
+
+<!-- 推文说明 -->
+<div>
+<h4 class="text-lg font-medium mb-3 text-dark">推文标题：替换为你的推文标题</h4>
+<p class="text-dark mb-4 leading-relaxed">
+<span class="font-medium text-primary">发布平台：</span>替换为发布平台（例如"微信公众号/校园官网"）<br>
+<span class="font-medium text-secondary">发布时间：</span>替换为发布时间（例如"2025.03"）<br>
+<span class="font-medium text-accent">阅读量/互动量：</span>替换为数据（例如"阅读量2000+，点赞150+"）
+</p>
+<p class="text-dark leading-relaxed">
+<span class="font-medium">内容说明：</span>替换为推文核心内容（例如"围绕'校园新媒体运营技巧'展开，结合案例分析新媒体用户增长策略，内容包含数据图表与实操建议，帮助读者快速掌握运营方法"）
+</p>
+</div>
+</div>
+</div>
+
+<!-- 海报作品（4个） -->
+<div class="bg-white rounded-2xl p-8 shadow-lg border border-primary/20">
+<h3 class="text-2xl font-semibold mb-6 text-primary flex items-center">
+<i class="fa fa-picture-o mr-2"></i> 海报作品（4个）
+</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- 海报1 -->
+<div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<img
+  src="https://picsum.photos/400/600?random=12"
+  alt="海报作品1"
+  class="w-full h-64 object-cover"
+>
+<div class="p-4">
+<h4 class="text-lg font-semibold mb-2 text-dark">海报1名称</h4>
+<p class="text-dark text-sm">
+说明：替换为海报用途（例如"校园文化节宣传海报，使用Ps+可画设计，主题'青春有你'"）
+</p>
+</div>
+</div>
+
+<!-- 海报2-4 类似结构，省略以节省空间 -->
+<!-- 海报1 -->
+<div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<img
+  src="https://picsum.photos/400/600?random=12"
+  alt="海报作品1"
+  class="w-full h-64 object-cover"
+>
+<div class="p-4">
+<h4 class="text-lg font-semibold mb-2 text-dark">海报1名称</h4>
+<p class="text-dark text-sm">
+说明：替换为海报用途（例如"校园文化节宣传海报，使用Ps+可画设计，主题'青春有你'"）
+</p>
+</div>
+</div>
+<!-- 海报1 -->
+<div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<img
+  src="https://picsum.photos/400/600?random=12"
+  alt="海报作品1"
+  class="w-full h-64 object-cover"
+>
+<div class="p-4">
+<h4 class="text-lg font-semibold mb-2 text-dark">海报1名称</h4>
+<p class="text-dark text-sm">
+说明：替换为海报用途（例如"校园文化节宣传海报，使用Ps+可画设计，主题'青春有你'"）
+</p>
+</div>
+</div>
+<!-- 海报1 -->
+<div class="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl overflow-hidden shadow-sm card-hover border border-primary/10">
+<img
+  src="https://picsum.photos/400/600?random=12"
+  alt="海报作品1"
+  class="w-full h-64 object-cover"
+>
+<div class="p-4">
+<h4 class="text-lg font-semibold mb-2 text-dark">海报1名称</h4>
+<p class="text-dark text-sm">
+说明：替换为海报用途（例如"校园文化节宣传海报，使用Ps+可画设计，主题'青春有你'"）
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 联系区 -->
+<section id="contact" class="py-16 bg-gradient-to-b from-accent/10 to-secondary/10">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-center mb-12 text-dark">联系我</h2>
+<div class="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-lg border border-accent/20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- 联系方式 -->
+<div>
+<h3 class="text-xl font-semibold mb-6 text-primary flex items-center">
+<i class="fa fa-envelope mr-2"></i> 联系方式
+</h3>
+<ul class="space-y-4 text-dark">
+<li class="flex items-center">
+<i class="fa fa-envelope-o text-primary text-xl w-8"></i>
+<span>3167633701@qq.com</span>
+</li>
+<li class="flex items-center">
+<i class="fa fa-phone text-secondary text-xl w-8"></i>
+<span>15771540526</span>
+</li>
+<li class="flex items-center">
+<i class="fa fa-graduation-cap text-accent text-xl w-8"></i>
+<span>深圳大学 - 网络与新媒体专业</span>
+</li>
+<li class="flex items-center">
+<i class="fa fa-calendar text-primary text-xl w-8"></i>
+<span>可到岗时间：2026年毕业季</span>
+</li>
+</ul>
+</div>
+
+<!-- 求职提示 -->
+<div>
+<h3 class="text-xl font-semibold mb-6 text-secondary flex items-center">
+<i class="fa fa-lightbulb-o mr-2"></i> 求职提示
+</h3>
+<p class="text-dark leading-relaxed mb-4">
+感谢您查看我的作品集！若您对我的作品或能力感兴趣，欢迎通过上述方式联系我，我会在24小时内回复。
+</p>
+<p class="text-dark leading-relaxed">
+如需查看更多作品细节或获取简历PDF，可直接联系我，我会第一时间提供。期待有机会与您进一步沟通！
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 页脚 -->
+<footer class="py-8 bg-gradient-to-r from-primary to-secondary text-white">
+<div class="container mx-auto px-4 text-center">
+<p class="text-white/90">© 2025 包原杰 - 个人作品集 | 网络与新媒体专业</p>
+<p class="text-white/70 text-sm mt-2">本作品集使用HTML、CSS、JavaScript + Tailwind CSS构建</p>
+</div>
+</footer>
+
+<!-- JavaScript（交互功能） -->
+<script>
+// 1. 移动端导航菜单切换
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+  menuBtn.innerHTML = mobileMenu.classList.contains('hidden')
+    ? '<i class="fa fa-bars text-xl"></i>'
+    : '<i class="fa fa-times text-xl"></i>';
+});
+
+// 2. 导航栏滚动效果（滚动时改变样式）
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('py-2', 'shadow');
+    navbar.classList.remove('py-3', 'shadow-sm');
+  } else {
+    navbar.classList.add('py-3', 'shadow-sm');
+    navbar.classList.remove('py-2', 'shadow');
+  }
+});
+
+// 3. 平滑滚动（点击导航链接跳转到对应区域）
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    // 关闭移动端菜单（如果打开）
+    if (!mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      menuBtn.innerHTML = '<i class="fa fa-bars text-xl"></i>';
+    }
+    // 滚动到目标区域
+    const targetId = this.getAttribute('href');
+    document.querySelector(targetId).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// 4. 图片加载失败时显示默认图
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', () => {
+    img.src = 'https://picsum.photos/400/300?random=default';
+    img.alt = '图片加载失败';
+  });
+});
+</script>
+</body>
+</html>
